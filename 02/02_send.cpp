@@ -8,22 +8,18 @@ using namespace std;
 
 constexpr auto QUEUE_NAME = "task_queue";
 
-int main(int argc, char* argv[])
-{
-  try
-  {
+int main(int argc, char* argv[]) {
+  try {
+    std::cout << "Usage:\n 02_send message\n";
     auto channel = AmqpClient::Channel::Create();
     channel->DeclareQueue(QUEUE_NAME, false, true, false, true);
 
-    for (int i = 1; i < argc; ++i)
-    {
+    for (int i = 1; i < argc; ++i) {
       auto message = AmqpClient::BasicMessage::Create(argv[i]);
       channel->BasicPublish("", QUEUE_NAME, message, false, false);
       clog << " [x] Sent '" << argv[i] << "'" << endl;
     }
-  }
-  catch (const exception& error)
-  {
+  } catch (const exception& error) {
     cerr << error.what() << endl;
   }
 

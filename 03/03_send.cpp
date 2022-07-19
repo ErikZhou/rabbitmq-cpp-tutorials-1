@@ -16,6 +16,7 @@ int main()
     channel->DeclareExchange(EXCHANGE_NAME
       , AmqpClient::Channel::EXCHANGE_TYPE_FANOUT, false, true, true);
 
+    std::cout << "Please input a message to send.\n";
     for (string line; getline(cin, line); )
     {
       auto message = AmqpClient::BasicMessage::Create(line);

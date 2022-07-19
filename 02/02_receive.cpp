@@ -28,7 +28,8 @@ int main()
 
       try
       {
-        this_thread::sleep_for(chrono::seconds(stoi(messagePayload)));
+        //this_thread::sleep_for(chrono::seconds(stoi(messagePayload)));
+          this_thread::sleep_for(chrono::seconds(1));
       }
       catch (const exception& error)
       {
